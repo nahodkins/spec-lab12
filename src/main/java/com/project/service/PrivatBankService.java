@@ -11,7 +11,7 @@ import java.util.List;
 
 public class PrivatBankService {
 
-    private PrivatBankApiDAO dao;
+    private final PrivatBankApiDAO dao;
     private static PrivatBankService instance;
 
     private PrivatBankService() {
@@ -35,7 +35,7 @@ public class PrivatBankService {
 
     public List<Currency> getCurrencyValuesForPeriod(String currency, int periodStartYear) throws MalformedURLException {
         LocalDate start = LocalDate.of(periodStartYear, 1, 1);
-        LocalDate end = LocalDate.of(LocalDate.now().getYear(), 12, 1);
+        LocalDate end = LocalDate.now().withMonth(1).withDayOfMonth(1);
         List<Currency> currencies = new ArrayList<>();
 
         while (!start.isAfter(end)) {

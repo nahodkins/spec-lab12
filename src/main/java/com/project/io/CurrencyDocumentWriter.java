@@ -8,9 +8,9 @@ import java.util.List;
 
 public class CurrencyDocumentWriter {
 
-    public static void writeCurrencyValuesToDocument(List<Currency> currencies, String docPath) throws MalformedURLException {
+    public static void writeCurrencyValuesToDocument(List<Currency> currencies, String docPath) {
         CurrencyDocument document = new CurrencyDocument();
         currencies.forEach(currency -> document.addCurrencyValue(currency.getDate(), currency));
-        document.writeDocument("currencies.xls");
+        document.writeDocument(docPath);
     }
 }
